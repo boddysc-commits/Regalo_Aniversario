@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestra Historia</title>
+  <style>
+    body {
+      background-color: #f7f3ef;
+      font-family: 'Georgia', serif;
+      text-align: center;
+      color: #4a3b32;
+      padding: 20px;
+      margin: 0;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 20px;
+      max-width: 380px;
+      margin: 20px auto;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    h2 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+    }
+    .polaroid {
+      background: #fff;
+      padding: 12px 12px 25px 12px;
+      border: 1px solid #eee;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      border-radius: 4px;
+    }
+    .polaroid img {
+      width: 100%;
+      border-radius: 4px;
+      display: block;
+    }
+    .timer {
+      font-size: 1rem;
+      font-weight: bold;
+      margin: 15px 0;
+      color: #8c5a47;
+      background: #fdfbf9;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px dashed #d9c5bd;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Hoy es el cumpleaños de mi persona favorita ❤️</h2>
+    
+    <div class="polaroid">
+      <!-- Cambia "tu-foto.jpg" por el nombre de tu archivo de imagen o enlace -->
+      <img src="tu-foto.jpg" alt="Nosotros">
+    </div>
+
+    <div class="timer" id="contador">Cargando tiempo juntos...</div>
+  </div>
+
+  <script>
+    // Configura aquí la fecha en que inició su relación: Año, Mes (0 = Enero, 1 = Febrero, ..., 5 = Junio), Día
+    const fechaInicio = new Date(2023, 5, 18); 
+
+    function actualizarContador() {
+      const ahora = new Date();
+      const diferencia = ahora - fechaInicio;
+      
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diferencia / 1000 / 60) % 60);
+      const segundos = Math.floor((diferencia / 1000) % 60);
+
+      document.getElementById('contador').innerHTML = 
+        `Llevamos juntos:<br>${dias} días, ${horas}h ${minutos}m ${segundos}s ✨`;
+    }
+
+    setInterval(actualizarContador, 1000);
+    actualizarContador();
+  </script>
+</body>
+</html>
